@@ -20,7 +20,7 @@ import { OrderDetailModule } from './order-detail/order-detail.module';
        host: 'us-cdbr-east-06.cleardb.net',
       port: 3306,
       username: 'b167f3cfab4e67',
-      password: '400541f8 ',
+      password: '400541f8',
       database: 'heroku_8c5feadb42c0d74',
       // host: 'localhost',
       // port: 3306,
