@@ -20,6 +20,16 @@ export class UsersService {
     return user;
   }
 
+  getUsers() {
+    return User.find({
+      relations: ['role'],
+      select: ['id_user', 'email', 'role', 'phone']
+        // id_user: true,
+        // email: true
+      
+    });
+  }
+
   async findById(id: number) {
     return await User.findOne(id, { relations: ['role', 'addresses'] });
   }

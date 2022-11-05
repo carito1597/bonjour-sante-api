@@ -18,6 +18,11 @@ export class UsersController {
     return this.usersService.showById(+id);
   }
 
+  @Get('')
+  showAll() {
+    return this.usersService.getUsers();
+  }
+
   @Get('addresses/:id')
   findAddresses(@Param('id') id: string) {
     return this.usersService.findAddressByIdUser(+id);
