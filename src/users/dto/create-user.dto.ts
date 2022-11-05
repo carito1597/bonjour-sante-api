@@ -13,5 +13,7 @@ export class CreateUserDto {
   @IsNotEmpty()
   role: Role;
 
-  address: Address[];
+  phone: string;
+
+  fullName: string;
 }

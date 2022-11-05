@@ -34,6 +34,8 @@ export class User extends BaseEntity {
 	@Column({ type: "varchar", length: 10})
 	phone: string;
 
+	@Column({ type: "varchar", length: 70})
+	fullName: string;
 
 	@OneToMany(() => Address, address => address.user)
 	addresses: Address[];//
