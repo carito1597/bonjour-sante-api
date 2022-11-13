@@ -2,9 +2,16 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 
 import { User } from './user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class UsersService {
+
+  constructor(
+    @InjectRepository(User) private userRepository: Repository<User>
+  ) { }
+
   async create(createUserDto: CreateUserDto) {
     const user = User.create(createUserDto);
     await user.save();
@@ -48,10 +55,11 @@ export class UsersService {
     return user.addresses;
   }
 
-  // async remove(id: number) {
-  //   const deleteResponse = await User.softRemove(id);
-  //   if (!deleteResponse.) {
-  //     throw new NotFoundException(id);
-  //   }
-  // }
+  async remove(id: number) {
+    const deleteResponse = this.userRepository.softDelete(id);
+    if (!(await deleteResponse).affected) {
+      throw new NotFoundException(id);
+    }
+  }
+
 }

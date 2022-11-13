@@ -1,5 +1,5 @@
 
-import { Controller, Get, Post, Body, Param, Req, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Req, UseGuards, Delete } from '@nestjs/common';
 
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -26,5 +26,10 @@ export class UsersController {
   @Get('addresses/:id')
   findAddresses(@Param('id') id: string) {
     return this.usersService.findAddressByIdUser(+id);
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.usersService.remove(+id);
   }
 }
