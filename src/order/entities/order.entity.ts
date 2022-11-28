@@ -17,11 +17,17 @@ export class Order {
 	@Column({ type: 'varchar', length: 25, default: 'Pendiente' })
 	status: string;
 
-	@Column({ type: 'varchar', length: 50})
+	@Column({ type: 'varchar', length: 50 })
 	payment_method: string;
 
-	@Column({ type: 'varchar', length: 50})
+	@Column({ type: 'varchar', length: 50 })
 	delivery_method: string;
+
+	@Column({ type: "int", default: 0 })
+	rating: number;
+
+	@Column({ type: 'varchar', length: 300, default: '' })
+	observation: string;
 
 	@OneToMany(() => OrderDetail, (order_detail) => order_detail.order)
 	order_detail: OrderDetail[];
